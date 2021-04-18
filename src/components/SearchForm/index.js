@@ -1,14 +1,12 @@
-import { getDefaultNormalizer } from "@testing-library/dom";
 import React from "react";
 
-function SearchForm(props){
+function SearchForm({handleInputChange}){
     return(
         <form className="search">
             <div className="form-group">
                 <label htmlFor="employees">Employee:</label>
                 <input
-                value={props.search}
-                onChange={props.handleInputChange}
+                onChange={e => handleInputChange(e)}
                 name="EmpSearch"
                 list="EmpSearchable"
                 type="text"
@@ -16,14 +14,6 @@ function SearchForm(props){
                 placeholder="type in an employee's name"
                 id="Empsearch"
                 />
-                <datalist id="search">
-                    {props.EmpSearchable.map(EmpSearch=>(
-                        <option value={EmpSearch} key={EmpSearch}/>
-                    ))}
-                </datalist>
-                    <button type="submit" onClick={props.handleFormSubmit} className="btn btn-warning ">
-                        Search
-                    </button>
             </div>
         </form>
     )
